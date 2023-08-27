@@ -2,3 +2,16 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: rgb(87, 105, 125);
+}
+
+.pageTitle {
+  color: white;
+  text-align: center;
+  font-size: 4rem;
+}

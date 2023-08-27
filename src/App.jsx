@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-      
+      <h1 className='pageTitle'>Star Wars: Memory of the Sith</h1>
     </>
   )
 }
