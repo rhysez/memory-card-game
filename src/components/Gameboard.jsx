@@ -3,7 +3,16 @@ import Card from './Card.jsx'
 export default function Gameboard(props) {
     return (
         <>
-            <Card />
+            <div className='cardGrid'>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+            </div>
         </>
     )
 }
