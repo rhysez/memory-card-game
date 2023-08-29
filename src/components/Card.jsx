@@ -1,21 +1,29 @@
-async function fetchCharacter() {
-    try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto')
-        const characterData = await response.json()
-        console.log(characterData)
-        return characterData
-    }
+import { useState } from 'react'
 
-    catch {
-        console.log('Could not fetch character')
-    }
-}
-
-// currently logs pokemon character information to console
-// because starhub api is not returning data
-// may need to change theme of guessing game due to api issues 
 export default function Card(props) {
+
+    const [pokemonName, setPokemonName] = useState('')
+
+    async function fetchPokemon() {
+        const pokemonCard = document.querySelector('.pokemonCard')
+
+        try {
+            const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+            const pokemonData = await response.json()
+            console.log(pokemonData.name)
+            setPokemonName(pokemonData.name)
+        }
+    
+        catch {
+            console.log('Could not fetch pokemon')
+        }
+    }
+
+
     return (
-        <button onClick={fetchCharacter}>Click for character</button>
+        <>
+            <button onClick={fetchPokemon}>Click for Pokemon</button>
+            <div className='pokemonCard'>{pokemonName}</div>
+        </>
     )
 }

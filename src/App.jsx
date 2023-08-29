@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <h1 className='pageTitle'>Star Wars: Memory of the Sith</h1>
+      <h1 className='pageTitle'>PokeGuess</h1>
       <Gameboard />
     </>
   )
