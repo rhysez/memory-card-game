@@ -9,29 +9,33 @@ export default function Card(props) {
     "squirtle",
     "charizard",
     "snorlax",
-    "oddish",
     "pikachu",
     "magikarp",
-    "flareon",
     "diglett",
+    "jigglypuff"
   ];
 
   const randomPokemon = Math.floor(Math.random() * pokemonList.length)
-
   const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${randomPokemon}`
 
-  async function fetchPokemon() {
-    try {
-      const response = await fetch(pokemonUrl);
-      const pokemonData = await response.json();
-      const pokemonNameCapitalised = pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1);
-      console.log(pokemonData);
-      setPokemonName(pokemonNameCapitalised)
-      setPokemonAvatar(pokemonData.sprites.front_default);
-    } 
-    catch {
-      throw new Error("Could not fetch pokemon!");
-    }
+  function fetchPokemon() {
+      useEffect(() => {
+        async function fetchData(){
+          try {
+            const response = await fetch(pokemonUrl);
+            const pokemonData = await response.json();
+            const pokemonName = pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1);
+            console.log(pokemonData);
+            setPokemonName(pokemonName)
+            setPokemonAvatar(pokemonData.sprites.front_default);
+          }
+          // throws when API is failing to retrieve data
+          catch {
+            throw new Error('Could not retrieve pokemon data')
+          }
+        }
+        fetchData()
+      }, [])
   }
 
   const returnedPokemon = fetchPokemon();
