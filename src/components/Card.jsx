@@ -16,11 +16,12 @@ export default function Card(props) {
   ];
 
   const randomPokemon = Math.floor(Math.random() * pokemonList.length)
-  const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${randomPokemon}`
+  const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/` + pokemonList[randomPokemon]
 
   function fetchPokemon() {
       useEffect(() => {
         async function fetchData(){
+
           try {
             const response = await fetch(pokemonUrl);
             const pokemonData = await response.json();
@@ -29,7 +30,7 @@ export default function Card(props) {
             setPokemonName(pokemonName)
             setPokemonAvatar(pokemonData.sprites.front_default);
           }
-          // throws when API is failing to retrieve data
+
           catch {
             throw new Error('Could not retrieve pokemon data')
           }

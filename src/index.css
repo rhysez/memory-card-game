@@ -16,6 +16,7 @@
   flex-direction: column;
   height: 100vh;
   justify-content: space-evenly;
+  text-align: center;
 }
 
 html {
@@ -43,10 +44,14 @@ body {
   min-width: 10%;
   transition: all ease-in-out 0.2s;
   padding: 10px;
+  border: solid 1px var(--title-color);
+  cursor: pointer;
 }
 
 .pokemonCard:hover {
   background-color: var(--highlighted-card-color);
+  border: solid 2.5px var(--title-color);
+  transform: scale(1.05)
 }
 
 .cardGrid {
@@ -54,4 +59,12 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.scoreContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.5rem;
+  color: var(--title-color)
 }
