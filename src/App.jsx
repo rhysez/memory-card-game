@@ -1,16 +1,21 @@
-import { useState } from 'react'
-import Gameboard from './components/Gameboard'
-import Score from './components/Score'
+import { useState } from "react";
+import Gameboard from "./components/Gameboard";
+import Score from "./components/Score";
 
 function App() {
-
   return (
     <>
-      <h1 className='pageTitle'>PokeGuess</h1>
+      <a href="https://www.textstudio.com/">
+        <img
+          src="../public/pokeguess-title.png"
+          alt="pokeguess title"
+          className="pageTitle"
+        />
+      </a>
       <Score />
       <Gameboard />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
