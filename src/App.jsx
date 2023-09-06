@@ -3,6 +3,10 @@ import Gameboard from "./components/Gameboard";
 import Score from "./components/Score";
 
 function App() {
+
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+
   return (
     <>
       <a href="https://www.textstudio.com/">
@@ -12,7 +16,7 @@ function App() {
           className="pageTitle"
         />
       </a>
-      <Score />
+      <Score currentScore={currentScore} bestScore={bestScore} />
       <Gameboard />
     </>
   );

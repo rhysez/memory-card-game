@@ -2,7 +2,7 @@ import Card from "./Card.jsx";
 
 export default function Gameboard(props) {
   return (
-    <>
+    <div className='gridContainer'>
       <div className="cardGrid">
         <Card />
         <Card />
@@ -13,6 +13,6 @@ export default function Gameboard(props) {
         <Card />
         <Card />
       </div>
-    </>
+    </div>
   );
 }

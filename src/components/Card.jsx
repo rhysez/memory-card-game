@@ -49,7 +49,7 @@ export default function Card(props) {
   return (
     <>
       <div className="pokemonCard">
-        <span>{pokemonName}</span>
+        <span className='pokemonName'>{pokemonName}</span>
         <img className="pokemonAvatar" src={pokemonAvatar}></img>
       </div>
     </>
