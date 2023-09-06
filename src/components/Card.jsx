@@ -48,7 +48,7 @@ export default function Card(props) {
 
   return (
     <>
-      <div className="pokemonCard">
+      <div className="pokemonCard" onClick={props.makeChoice}>
         <span className='pokemonName'>{pokemonName}</span>
         <img className="pokemonAvatar" src={pokemonAvatar}></img>
       </div>
