@@ -9,14 +9,16 @@
 
   --card-color: rgb(34, 83, 139);
   --highlighted-card-color: rgb(90, 136, 189);
+  
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   text-align: center;
   align-items: center;
+  min-height: 100svh;
 }
 
 html {
@@ -28,7 +30,7 @@ body {
 }
 
 .pageTitle {
-  transform: scale(0.5);
+  max-width: 55%;
 }
 
 .pokemonCard {
