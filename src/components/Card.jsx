@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export default function Card(props) {
   const [pokemonAvatar, setPokemonAvatar] = useState(null);
   const [pokemonName, setPokemonName] = useState("");
+  const [isLoading, setLoading] = useState(true);
 
   const pokemonList = [
     "bulbasaur",
@@ -27,15 +28,17 @@ export default function Card(props) {
   function fetchPokemon() {
     useEffect(() => {
       async function fetchData() {
+        setLoading(true)
         try {
+          await new Promise(resolve => setTimeout(resolve, 1000))
           const response = await fetch(pokemonUrl);
           const pokemonData = await response.json();
           const pokemonName =
             pokemonData.name.charAt(0).toUpperCase() +
             pokemonData.name.slice(1);
-          console.log(pokemonData);
           setPokemonName(pokemonName);
           setPokemonAvatar(pokemonData.sprites.front_default);
+          setLoading(false)
         } catch {
           throw new Error("Could not retrieve pokemon data");
         }
@@ -46,12 +49,20 @@ export default function Card(props) {
 
   const returnedPokemon = fetchPokemon();
 
-  return (
-    <>
-      <div className="pokemonCard" onClick={props.makeChoice}>
-        <span className='pokemonName'>{pokemonName}</span>
-        <img className="pokemonAvatar" src={pokemonAvatar}></img>
-      </div>
-    </>
-  );
+  if (isLoading == true) {
+    return (
+      <img src="../public/pokeball.gif" alt="pokeball" className='loading' />
+    )
+  } else if (isLoading == false) {
+    return (
+      <>
+        <div key={pokemonName} className="pokemonCard" onClick={props.makeChoice}>
+          <span className='pokemonName'>{pokemonName}</span>
+          <img className="pokemonAvatar" src={pokemonAvatar}></img>
+        </div>
+      </>
+    );
+  }
+
+  
 }

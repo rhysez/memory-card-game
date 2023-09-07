@@ -23,7 +23,7 @@ export default function Gameboard(props) {
     <>
       <Score currentScore={currentScore} bestScore={bestScore} />
       <div className='gridContainer'>
-        <div className="cardGrid">
+        <div className="cardGrid" key={currentScore}>
           <Card makeChoice={makeChoice} />
           <Card makeChoice={makeChoice} />
           <Card makeChoice={makeChoice} />

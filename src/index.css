@@ -4,7 +4,7 @@
   font-family: 'Press Start 2P', system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   --text-color: white;
-  --title-color: rgb(255, 211, 15);
+  --title-color: rgb(241, 241, 152);
   --page-color: linear-gradient(0deg, rgba(34,101,195,1) 0%, rgba(45,194,253,1) 100%);
 
   --card-color: rgb(34, 83, 139);
@@ -12,6 +12,7 @@
   --highlighted-card-border-color: rgb(38, 240, 38);
 
   --content-background: rgb(66, 151, 225, 0.5);
+  --content-border: rgb(252, 252, 212);
 }
 
 @keyframes pulse {
@@ -60,12 +61,12 @@ body {
   transition: all ease-in-out 0.2s;
   padding: 1rem;
   border: solid 1px var(--title-color);
+  border-radius: 20%;
   cursor: pointer;
 }
 
 .pokemonCard:hover {
   background-color: var(--highlighted-card-color);
-  border-color: var(--highlighted-card-border-color);
 }
 
 .pokemonAvatar {
@@ -76,11 +77,16 @@ body {
   transform: scale(1.2)
 }
 
+.pokemonName {
+  color: rgb(241, 241, 152);
+}
+
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-auto-flow: row;
+  gap: 0.5rem;
 }
 
 .scoreContainer {
@@ -92,7 +98,7 @@ body {
   background-color: var(--card-color);
   padding: 2rem;
   border-radius: 10px;
-  border: solid rgb(255, 211, 15) 5px;
+  border: solid var(--title-color) 5px;
   width: 35%;
 }
 
@@ -102,8 +108,12 @@ body {
   align-items: center;
   gap: 6rem;
   background-color: var(--content-background);
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  border-radius: 30px;
-  border: solid white 7.5px;
+  padding: 5rem;
+  border-radius: 5%;
+  border: solid var(--content-border) 7.5px;
+  transition: all ease-in-out 1s;
+}
+
+.loading {
+  padding: 1rem;
 }
