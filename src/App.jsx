@@ -6,14 +6,16 @@ function App() {
 
   return (
     <>
-      <a href="https://www.textstudio.com/">
-        <img
-          src="../public/pokeguess-title.png"
-          alt="pokeguess title"
-          className="pageTitle"
-        />
-      </a>
-      <Gameboard />
+      <div className='content'>
+        <a href="https://www.textstudio.com/">
+          <img
+            src="../public/pokeguess-title.png"
+            alt="pokeguess title"
+            className="pageTitle"
+          />
+        </a>
+        <Gameboard />
+      </div>
     </>
   );
 }

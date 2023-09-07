@@ -11,7 +11,8 @@ export default function Gameboard(props) {
 
   function makeChoice() {
     setCurrentScore(currentScore + 1)
-    // if choice is wrong, do this...
+    // resetGameboard()
+    // if choice is wrong, setCurrentScore(0)
   }
 
   function resetGameboard() {

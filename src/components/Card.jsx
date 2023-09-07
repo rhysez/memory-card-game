@@ -20,9 +20,9 @@ export default function Card(props) {
     "jolteon",
   ];
 
-  const randomPokemon = Math.floor(Math.random() * pokemonList.length);
+  const randomPokemonIndex = Math.floor(Math.random() * pokemonList.length);
   const pokemonUrl =
-    `https://pokeapi.co/api/v2/pokemon/` + pokemonList[randomPokemon];
+    `https://pokeapi.co/api/v2/pokemon/` + pokemonList[randomPokemonIndex];
 
   function fetchPokemon() {
     useEffect(() => {
