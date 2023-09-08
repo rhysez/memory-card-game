@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Gameboard from './Gameboard'
 
 export default function Card(props) {
   const [pokemonAvatar, setPokemonAvatar] = useState(null);
@@ -31,10 +30,6 @@ export default function Card(props) {
   }
 
   const returnedPokemon = fetchPokemon();
-
-  function handleClick(choice) {
-    Gameboard.makeChoice(choice)
-  }
 
   if (isLoading == true) {
     return (

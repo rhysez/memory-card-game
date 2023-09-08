@@ -116,6 +116,10 @@ body {
   cursor: pointer;
 }
 
+.playAgain:hover {
+  border-color:rgb(38, 240, 38);
+}
+
 .content {
   display: flex;
   flex-direction: column;

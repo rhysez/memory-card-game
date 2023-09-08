@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Gameboard from "./components/Gameboard";
-import Score from "./components/Score";
 
 function App() {
   const [key, setKey] = useState(0)
@@ -19,7 +18,7 @@ function App() {
             className="pageTitle"
           />
         </a>
-        <Gameboard key={key} playAgain={playAgain}/>
+        <Gameboard key={key} playAgain={playAgain} />
       </div>
     </>
   );

@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 import Score from "./Score.jsx";
+
+// pokemonChoice state is always 1 step behind :(
+// could be worth trying to lift pokemonChoices array into App component
+// and adding choices to that array via a function using props
 
 export default function Gameboard(props) {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-
-  // NEED TO FIGURE OUT HOW TO PASS makeChoice FUNCTION TO CARD VIA PROPS AND CALL IT e.g makeChoice(pokemonChoices[0])
+  const [pokemonChoice, setPokemonChoices] = useState([]) 
 
     function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
       }
-      console.log(array)
       return array
   }
 
@@ -35,10 +37,14 @@ export default function Gameboard(props) {
 
   let pokemonListShuffled = shuffleArray(pokemonList)
 
-  const pokemonChoices = [];
+  function updatePokemonChoices(choice) {
+    setPokemonChoices([...pokemonChoice, choice])
+    console.log(pokemonChoice)
+    shuffleArray(pokemonList)
+  }
 
   function checkPokemonExists(selectedPokemon) {
-    pokemonList.indexOf(selectedPokemon) > -1
+    pokemonChoice.includes(selectedPokemon)
       ? resetGameboard(currentScore)
       : null;
   }
@@ -47,8 +53,11 @@ export default function Gameboard(props) {
     checkPokemonExists(choice);
     setCurrentScore(currentScore + 1);
     bestScore <= currentScore ? setBestScore(currentScore + 1) : null;
-    pokemonChoices.push(choice);
-    shuffleArray(pokemonList)
+  }
+
+  function confirmChoice(choice) {
+    makeChoice(choice);
+    updatePokemonChoices(choice);
   }
 
   function resetGameboard(score) {
@@ -62,14 +71,14 @@ export default function Gameboard(props) {
         <Score currentScore={currentScore} bestScore={bestScore} />
         <div className="gridContainer">
           <div className="cardGrid" key={currentScore}>
-            <Card handleClick={makeChoice} pokemonassign={pokemonList[0]} />
-            <Card handleClick={makeChoice} pokemonassign={pokemonList[1]} />
-            <Card handleClick={makeChoice} pokemonassign={pokemonList[2]} />
-            <Card handleClick={makeChoice} pokemonassign={pokemonList[3]} />
-            <Card handleClick={makeChoice} pokemonassign={pokemonList[4]} />
-            <Card handleClick={makeChoice} pokemonassign={pokemonList[5]} />
-            <Card handleClick={makeChoice} pokemonassign={pokemonList[6]} />
-            <Card handleClick={makeChoice} pokemonassign={pokemonList[7]} />
+            <Card handleClick={() => confirmChoice(pokemonList[0])} pokemonassign={pokemonList[0]} />
+            <Card handleClick={() => confirmChoice(pokemonList[1])} pokemonassign={pokemonList[1]} />
+            <Card handleClick={() => confirmChoice(pokemonList[2])} pokemonassign={pokemonList[2]} />
+            <Card handleClick={() => confirmChoice(pokemonList[3])} pokemonassign={pokemonList[3]} />
+            <Card handleClick={() => confirmChoice(pokemonList[4])} pokemonassign={pokemonList[4]} />
+            <Card handleClick={() => confirmChoice(pokemonList[5])} pokemonassign={pokemonList[5]} />
+            <Card handleClick={() => confirmChoice(pokemonList[6])} pokemonassign={pokemonList[6]} />
+            <Card handleClick={() => confirmChoice(pokemonList[7])} pokemonassign={pokemonList[7]} />
           </div>
         </div>
       </>
