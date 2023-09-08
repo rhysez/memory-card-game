@@ -3,6 +3,11 @@ import Gameboard from "./components/Gameboard";
 import Score from "./components/Score";
 
 function App() {
+  const [key, setKey] = useState(0)
+
+  function playAgain(){
+    setKey(key + 1)
+  }
 
   return (
     <>
@@ -14,7 +19,7 @@ function App() {
             className="pageTitle"
           />
         </a>
-        <Gameboard />
+        <Gameboard key={key} playAgain={playAgain}/>
       </div>
     </>
   );

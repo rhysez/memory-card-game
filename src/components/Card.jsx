@@ -5,32 +5,14 @@ export default function Card(props) {
   const [pokemonName, setPokemonName] = useState("");
   const [isLoading, setLoading] = useState(true);
 
-  const pokemonList = [
-    "bulbasaur",
-    "squirtle",
-    "charizard",
-    "snorlax",
-    "pikachu",
-    "magikarp",
-    "diglett",
-    "jigglypuff",
-    "blastoise",
-    "psyduck",
-    "slowpoke",
-    "eevee",
-    "jolteon",
-  ];
-
-  const randomPokemonIndex = Math.floor(Math.random() * pokemonList.length);
-  const pokemonUrl =
-    `https://pokeapi.co/api/v2/pokemon/` + props.pokemonassign;
+  const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/` + props.pokemonassign;
 
   function fetchPokemon() {
     useEffect(() => {
       async function fetchData() {
-        setLoading(true)
+        setLoading(true);
         try {
-          await new Promise(resolve => setTimeout(resolve, 1000))
+          await new Promise((resolve) => setTimeout(resolve, 1000));
           const response = await fetch(pokemonUrl);
           const pokemonData = await response.json();
           const pokemonName =
@@ -38,7 +20,7 @@ export default function Card(props) {
             pokemonData.name.slice(1);
           setPokemonName(pokemonName);
           setPokemonAvatar(pokemonData.sprites.front_default);
-          setLoading(false)
+          setLoading(false);
         } catch {
           throw new Error("Could not retrieve pokemon data");
         }
@@ -51,18 +33,20 @@ export default function Card(props) {
 
   if (isLoading == true) {
     return (
-      <img src="../public/pokeball.gif" alt="pokeball" className='loading' />
-    )
+      <img src="../public/pokeball.gif" alt="pokeball" className="loading" />
+    );
   } else if (isLoading == false) {
     return (
       <>
-        <div className="pokemonCard" onClick={props.makeChoice} pokemonassign={props.pokemonassign}>
-          <span className='pokemonName'>{pokemonName}</span>
+        <div
+          className="pokemonCard"
+          onClick={props.handleClick}
+          pokemonassign={props.pokemonassign}
+        >
+          <span className="pokemonName">{pokemonName}</span>
           <img className="pokemonAvatar" src={pokemonAvatar}></img>
         </div>
       </>
     );
   }
-
-  
 }

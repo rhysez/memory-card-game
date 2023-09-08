@@ -102,6 +102,20 @@ body {
   width: 35%;
 }
 
+.playAgain {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.5rem;
+  color: var(--title-color);
+  background-color: var(--card-color);
+  padding: 2rem;
+  border-radius: 10px;
+  border: solid var(--title-color) 5px;
+  width: 50%;
+  cursor: pointer;
+}
+
 .content {
   display: flex;
   flex-direction: column;
