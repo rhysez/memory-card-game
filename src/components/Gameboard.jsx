@@ -6,7 +6,18 @@ export default function Gameboard(props) {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
-  const pokemonList = [
+  // NEED TO FIGURE OUT HOW TO PASS makeChoice FUNCTION TO CARD VIA PROPS AND CALL IT e.g makeChoice(pokemonChoices[0])
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+      }
+      console.log(array)
+      return array
+  }
+
+  let pokemonList = [
     "bulbasaur",
     "squirtle",
     "charizard",
@@ -22,6 +33,8 @@ export default function Gameboard(props) {
     "jolteon",
   ];
 
+  let pokemonListShuffled = shuffleArray(pokemonList)
+
   const pokemonChoices = [];
 
   function checkPokemonExists(selectedPokemon) {
@@ -35,6 +48,7 @@ export default function Gameboard(props) {
     setCurrentScore(currentScore + 1);
     bestScore <= currentScore ? setBestScore(currentScore + 1) : null;
     pokemonChoices.push(choice);
+    shuffleArray(pokemonList)
   }
 
   function resetGameboard(score) {
