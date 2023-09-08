@@ -3,20 +3,34 @@ import Card from "./Card.jsx";
 import Score from "./Score.jsx"
 
 export default function Gameboard(props) {
-  // lifted these state variables from Score and now passing state via props to Score
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
-  let pokemonChoices = []
+  const pokemonList = [
+    "bulbasaur",
+    "squirtle",
+    "charizard",
+    "snorlax",
+    "pikachu",
+    "magikarp",
+    "diglett",
+    "jigglypuff",
+    "blastoise",
+    "psyduck",
+    "slowpoke",
+    "eevee",
+    "jolteon",
+  ];
 
-  function makeChoice() {
+  function makeChoice(choice) {
     setCurrentScore(currentScore + 1)
-    // resetGameboard()
-    // if choice is wrong, setCurrentScore(0)
+    bestScore <= currentScore ? setBestScore(currentScore + 1) : null
+    //currentScore == 5 ? resetGameboard(currentScore) : null
   }
 
-  function resetGameboard() {
-    // jumble the gameboard in a random order
+  function resetGameboard(score) {
+    setBestScore(score + 1)
+    setCurrentScore(0)
   }
 
   return (
@@ -24,14 +38,14 @@ export default function Gameboard(props) {
       <Score currentScore={currentScore} bestScore={bestScore} />
       <div className='gridContainer'>
         <div className="cardGrid" key={currentScore}>
-          <Card makeChoice={makeChoice} />
-          <Card makeChoice={makeChoice} />
-          <Card makeChoice={makeChoice} />
-          <Card makeChoice={makeChoice} />
-          <Card makeChoice={makeChoice} />
-          <Card makeChoice={makeChoice} />
-          <Card makeChoice={makeChoice} />
-          <Card makeChoice={makeChoice} />
+          <Card makeChoice={makeChoice} pokemonassign={pokemonList[0]} />
+          <Card makeChoice={makeChoice} pokemonassign={pokemonList[1]} />
+          <Card makeChoice={makeChoice} pokemonassign={pokemonList[2]} />
+          <Card makeChoice={makeChoice} pokemonassign={pokemonList[3]} />
+          <Card makeChoice={makeChoice} pokemonassign={pokemonList[4]} />
+          <Card makeChoice={makeChoice} pokemonassign={pokemonList[5]} />
+          <Card makeChoice={makeChoice} pokemonassign={pokemonList[6]} />
+          <Card makeChoice={makeChoice} pokemonassign={pokemonList[7]} />
         </div>
       </div>
     </>

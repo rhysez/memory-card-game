@@ -23,7 +23,7 @@ export default function Card(props) {
 
   const randomPokemonIndex = Math.floor(Math.random() * pokemonList.length);
   const pokemonUrl =
-    `https://pokeapi.co/api/v2/pokemon/` + pokemonList[randomPokemonIndex];
+    `https://pokeapi.co/api/v2/pokemon/` + props.pokemonassign;
 
   function fetchPokemon() {
     useEffect(() => {
@@ -56,7 +56,7 @@ export default function Card(props) {
   } else if (isLoading == false) {
     return (
       <>
-        <div key={pokemonName} className="pokemonCard" onClick={props.makeChoice}>
+        <div className="pokemonCard" onClick={props.makeChoice} pokemonassign={props.pokemonassign}>
           <span className='pokemonName'>{pokemonName}</span>
           <img className="pokemonAvatar" src={pokemonAvatar}></img>
         </div>
