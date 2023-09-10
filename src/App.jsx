@@ -13,7 +13,7 @@ function App() {
       <div className='content'>
         <a href="https://www.textstudio.com/">
           <img
-            src="/public/pokeguess-title.png"
+            src="/pokeguess-title.png"
             alt="pokeguess title"
             className="pageTitle"
           />
