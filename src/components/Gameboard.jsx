@@ -48,26 +48,24 @@ export default function Gameboard(props) {
   }
 
   function resetGameboard(score) {
-    setBestScore(score + 1);
+    setBestScore(score - 1);
     setCurrentScore(0);
     setPokemonChoices([]);
   }
 
-  // this give us the correct pokemonChoice value!!
-  // need to get it to reset gameboard when value appears twice in array
   useEffect(() => {
     console.log(pokemonChoice);
     let duplicateChecker = pokemonChoice.filter((item, index) => pokemonChoice.indexOf(item) !== index);
     duplicateChecker.length > 0
       ? resetGameboard(currentScore)
       : null;
-  }, [pokemonChoice, pokemonList]);
+
+  }, [pokemonChoice]);
 
   if (currentScore < 8) {
     return (
       <>
         <Score currentScore={currentScore} bestScore={bestScore} />
-        <div className="gridContainer">
           <div className="cardGrid" key={currentScore}>
             <Card
               handleClick={() => {
@@ -126,7 +124,6 @@ export default function Gameboard(props) {
               pokemonassign={pokemonList[7]}
             />
           </div>
-        </div>
       </>
     );
   } else {
