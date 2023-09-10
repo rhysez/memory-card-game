@@ -3,20 +3,19 @@ import Card from "./Card.jsx";
 import Score from "./Score.jsx";
 
 // pokemonChoice state is always 1 step behind :(
-// could be worth trying to lift pokemonChoices array into App component
-// and adding choices to that array via a function using props
+// figure out how to use useEffect hook to get immediate state value
 
 export default function Gameboard(props) {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [pokemonChoice, setPokemonChoices] = useState([]) 
+  const [pokemonChoice, setPokemonChoices] = useState([]);
 
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
 
   let pokemonList = [
@@ -35,16 +34,16 @@ export default function Gameboard(props) {
     "jolteon",
   ];
 
-  let pokemonListShuffled = shuffleArray(pokemonList)
+  let pokemonListShuffled = shuffleArray(pokemonList);
 
   function updatePokemonChoices(choice) {
-    setPokemonChoices([...pokemonChoice, choice])
-    console.log(pokemonChoice)
-    shuffleArray(pokemonList)
+    setPokemonChoices([...pokemonChoice, choice]);
+    shuffleArray(pokemonList);
+    console.log(pokemonChoice);
   }
 
-  function checkPokemonExists(selectedPokemon) {
-    pokemonChoice.includes(selectedPokemon)
+  function checkPokemonExists(choice) {
+    pokemonChoice.includes(choice)
       ? resetGameboard(currentScore)
       : null;
   }
@@ -55,15 +54,15 @@ export default function Gameboard(props) {
     bestScore <= currentScore ? setBestScore(currentScore + 1) : null;
   }
 
-  function confirmChoice(choice) {
-    makeChoice(choice);
-    updatePokemonChoices(choice);
-  }
-
   function resetGameboard(score) {
     setBestScore(score + 1);
     setCurrentScore(0);
   }
+
+  // this give us the correct pokemonChoice value
+  useEffect(() => {
+    console.log(pokemonChoice)
+  }, [pokemonChoice])
 
   if (currentScore < 8) {
     return (
@@ -71,19 +70,71 @@ export default function Gameboard(props) {
         <Score currentScore={currentScore} bestScore={bestScore} />
         <div className="gridContainer">
           <div className="cardGrid" key={currentScore}>
-            <Card handleClick={() => confirmChoice(pokemonList[0])} pokemonassign={pokemonList[0]} />
-            <Card handleClick={() => confirmChoice(pokemonList[1])} pokemonassign={pokemonList[1]} />
-            <Card handleClick={() => confirmChoice(pokemonList[2])} pokemonassign={pokemonList[2]} />
-            <Card handleClick={() => confirmChoice(pokemonList[3])} pokemonassign={pokemonList[3]} />
-            <Card handleClick={() => confirmChoice(pokemonList[4])} pokemonassign={pokemonList[4]} />
-            <Card handleClick={() => confirmChoice(pokemonList[5])} pokemonassign={pokemonList[5]} />
-            <Card handleClick={() => confirmChoice(pokemonList[6])} pokemonassign={pokemonList[6]} />
-            <Card handleClick={() => confirmChoice(pokemonList[7])} pokemonassign={pokemonList[7]} />
+            <Card
+              handleClick={() => {
+                makeChoice(pokemonList[0]);
+                updatePokemonChoices(pokemonList[0]);
+              }}
+              pokemonassign={pokemonList[0]}
+            />
+            <Card
+              handleClick={() => {
+                makeChoice(pokemonList[1]);
+                updatePokemonChoices(pokemonList[1]);
+              }}
+              pokemonassign={pokemonList[1]}
+            />
+            <Card
+              handleClick={() => {
+                makeChoice(pokemonList[2]);
+                updatePokemonChoices(pokemonList[2]);
+              }}
+              pokemonassign={pokemonList[2]}
+            />
+            <Card
+              handleClick={() => {
+                makeChoice(pokemonList[3]);
+                updatePokemonChoices(pokemonList[3]);
+              }}
+              pokemonassign={pokemonList[3]}
+            />
+            <Card
+              handleClick={() => {
+                makeChoice(pokemonList[4]);
+                updatePokemonChoices(pokemonList[4]);
+              }}
+              pokemonassign={pokemonList[4]}
+            />
+            <Card
+              handleClick={() => {
+                makeChoice(pokemonList[5]);
+                updatePokemonChoices(pokemonList[5]);
+              }}
+              pokemonassign={pokemonList[5]}
+            />
+            <Card
+              handleClick={() => {
+                makeChoice(pokemonList[6]);
+                updatePokemonChoices(pokemonList[6]);
+              }}
+              pokemonassign={pokemonList[6]}
+            />
+            <Card
+              handleClick={() => {
+                makeChoice(pokemonList[7]);
+                updatePokemonChoices(pokemonList[7]);
+              }}
+              pokemonassign={pokemonList[7]}
+            />
           </div>
         </div>
       </>
     );
   } else {
-    return <p className="playAgain" onClick={props.playAgain}>You win! Play again?</p>;
+    return (
+      <p className="playAgain" onClick={props.playAgain}>
+        You win! Play again?
+      </p>
+    );
   }
 }
