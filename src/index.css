@@ -33,7 +33,6 @@
   display: flex;
   justify-content: space-evenly;
   text-align: center;
-  min-height: 100svh;
 }
 
 html {
@@ -41,7 +40,7 @@ html {
 }
 
 body {
-  background: url('../public/pokeguess-background.jpg');
+  background-color: rgba(234, 237, 66, 0.893);
 }
 
 .pageTitle {
