@@ -33,7 +33,7 @@ export default function Card(props) {
 
   if (isLoading == true) {
     return (
-      <img src="../public/pokeball.gif" alt="pokeball" className="loading" />
+      <img src="/public/pokeball.gif" alt="pokeball" className="loading" />
     );
   } else if (isLoading == false) {
     return (
