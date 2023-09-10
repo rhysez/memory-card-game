@@ -39,30 +39,29 @@ export default function Gameboard(props) {
   function updatePokemonChoices(choice) {
     setPokemonChoices([...pokemonChoice, choice]);
     shuffleArray(pokemonList);
-    console.log(pokemonChoice);
-  }
-
-  function checkPokemonExists(choice) {
-    pokemonChoice.includes(choice)
-      ? resetGameboard(currentScore)
-      : null;
   }
 
   function makeChoice(choice) {
-    checkPokemonExists(choice);
     setCurrentScore(currentScore + 1);
     bestScore <= currentScore ? setBestScore(currentScore + 1) : null;
+    return choice;
   }
 
   function resetGameboard(score) {
     setBestScore(score + 1);
     setCurrentScore(0);
+    setPokemonChoices([]);
   }
 
-  // this give us the correct pokemonChoice value
+  // this give us the correct pokemonChoice value!!
+  // need to get it to reset gameboard when value appears twice in array
   useEffect(() => {
-    console.log(pokemonChoice)
-  }, [pokemonChoice])
+    console.log(pokemonChoice);
+    let duplicateChecker = pokemonChoice.filter((item, index) => pokemonChoice.indexOf(item) !== index);
+    duplicateChecker.length > 0
+      ? resetGameboard(currentScore)
+      : null;
+  }, [pokemonChoice, pokemonList]);
 
   if (currentScore < 8) {
     return (
