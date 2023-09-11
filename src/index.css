@@ -1,11 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 :root {
-  font-family: 'Press Start 2P', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Press Start 2P", system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   --text-color: white;
   --title-color: rgb(241, 241, 152);
-  --page-color: linear-gradient(0deg, rgba(34,101,195,1) 0%, rgba(45,194,253,1) 100%);
+  --page-color: linear-gradient(
+    0deg,
+    rgba(34, 101, 195, 1) 0%,
+    rgba(45, 194, 253, 1) 100%
+  );
 
   --card-color: rgb(34, 83, 139);
   --highlighted-card-color: rgb(90, 136, 189);
@@ -72,7 +76,7 @@ body {
 }
 
 .pokemonAvatar:hover {
-  transform: scale(1.2)
+  transform: scale(1.2);
 }
 
 .pokemonName {
@@ -116,7 +120,7 @@ body {
 }
 
 .playAgain:hover {
-  border-color:rgb(38, 240, 38);
+  border-color: rgb(38, 240, 38);
 }
 
 .content {

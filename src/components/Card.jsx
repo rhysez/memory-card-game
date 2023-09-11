@@ -32,9 +32,7 @@ export default function Card(props) {
   const returnedPokemon = fetchPokemon();
 
   if (isLoading == true) {
-    return (
-      <img src="/pokeball.gif" alt="pokeball" className="loading" />
-    );
+    return <img src="/pokeball.gif" alt="pokeball" className="loading" />;
   } else if (isLoading == false) {
     return (
       <>

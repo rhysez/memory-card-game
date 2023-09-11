@@ -2,9 +2,6 @@ import { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 import Score from "./Score.jsx";
 
-// pokemonChoice state is always 1 step behind :(
-// figure out how to use useEffect hook to get immediate state value
-
 export default function Gameboard(props) {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
@@ -55,75 +52,74 @@ export default function Gameboard(props) {
 
   useEffect(() => {
     console.log(pokemonChoice);
-    let duplicateChecker = pokemonChoice.filter((item, index) => pokemonChoice.indexOf(item) !== index);
-    duplicateChecker.length > 0
-      ? resetGameboard(currentScore)
-      : null;
-
+    let duplicateChecker = pokemonChoice.filter(
+      (item, index) => pokemonChoice.indexOf(item) !== index
+    );
+    duplicateChecker.length > 0 ? resetGameboard(currentScore) : null;
   }, [pokemonChoice]);
 
   if (currentScore < 8) {
     return (
       <>
         <Score currentScore={currentScore} bestScore={bestScore} />
-          <div className="cardGrid" key={currentScore}>
-            <Card
-              handleClick={() => {
-                makeChoice(pokemonList[0]);
-                updatePokemonChoices(pokemonList[0]);
-              }}
-              pokemonassign={pokemonList[0]}
-            />
-            <Card
-              handleClick={() => {
-                makeChoice(pokemonList[1]);
-                updatePokemonChoices(pokemonList[1]);
-              }}
-              pokemonassign={pokemonList[1]}
-            />
-            <Card
-              handleClick={() => {
-                makeChoice(pokemonList[2]);
-                updatePokemonChoices(pokemonList[2]);
-              }}
-              pokemonassign={pokemonList[2]}
-            />
-            <Card
-              handleClick={() => {
-                makeChoice(pokemonList[3]);
-                updatePokemonChoices(pokemonList[3]);
-              }}
-              pokemonassign={pokemonList[3]}
-            />
-            <Card
-              handleClick={() => {
-                makeChoice(pokemonList[4]);
-                updatePokemonChoices(pokemonList[4]);
-              }}
-              pokemonassign={pokemonList[4]}
-            />
-            <Card
-              handleClick={() => {
-                makeChoice(pokemonList[5]);
-                updatePokemonChoices(pokemonList[5]);
-              }}
-              pokemonassign={pokemonList[5]}
-            />
-            <Card
-              handleClick={() => {
-                makeChoice(pokemonList[6]);
-                updatePokemonChoices(pokemonList[6]);
-              }}
-              pokemonassign={pokemonList[6]}
-            />
-            <Card
-              handleClick={() => {
-                makeChoice(pokemonList[7]);
-                updatePokemonChoices(pokemonList[7]);
-              }}
-              pokemonassign={pokemonList[7]}
-            />
-          </div>
+        <div className="cardGrid" key={currentScore}>
+          <Card
+            handleClick={() => {
+              makeChoice(pokemonList[0]);
+              updatePokemonChoices(pokemonList[0]);
+            }}
+            pokemonassign={pokemonList[0]}
+          />
+          <Card
+            handleClick={() => {
+              makeChoice(pokemonList[1]);
+              updatePokemonChoices(pokemonList[1]);
+            }}
+            pokemonassign={pokemonList[1]}
+          />
+          <Card
+            handleClick={() => {
+              makeChoice(pokemonList[2]);
+              updatePokemonChoices(pokemonList[2]);
+            }}
+            pokemonassign={pokemonList[2]}
+          />
+          <Card
+            handleClick={() => {
+              makeChoice(pokemonList[3]);
+              updatePokemonChoices(pokemonList[3]);
+            }}
+            pokemonassign={pokemonList[3]}
+          />
+          <Card
+            handleClick={() => {
+              makeChoice(pokemonList[4]);
+              updatePokemonChoices(pokemonList[4]);
+            }}
+            pokemonassign={pokemonList[4]}
+          />
+          <Card
+            handleClick={() => {
+              makeChoice(pokemonList[5]);
+              updatePokemonChoices(pokemonList[5]);
+            }}
+            pokemonassign={pokemonList[5]}
+          />
+          <Card
+            handleClick={() => {
+              makeChoice(pokemonList[6]);
+              updatePokemonChoices(pokemonList[6]);
+            }}
+            pokemonassign={pokemonList[6]}
+          />
+          <Card
+            handleClick={() => {
+              makeChoice(pokemonList[7]);
+              updatePokemonChoices(pokemonList[7]);
+            }}
+            pokemonassign={pokemonList[7]}
+          />
+        </div>
       </>
     );
   } else {

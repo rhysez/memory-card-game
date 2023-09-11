@@ -1,8 +1,4 @@
-# React + Vite
+# PokeGuess - A memory game built with React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A Pokemon themed guessing game where in which the user must not click the same Pokemon twice in a row.
+I built this project to reinforce my understanding of useState and useEffect in React. 
